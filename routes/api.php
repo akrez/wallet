@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\v1\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::get('payments', [PaymentController::class, 'index']);
+    Route::post('payments', [PaymentController::class, 'store']);
+    Route::get('payments/{payment}', [PaymentController::class, 'show']);
+    Route::patch('payments/{payment}/reject', [PaymentController::class, 'reject']);
+    Route::patch('payments/{payment}/approve', [PaymentController::class, 'approve']);
 });
