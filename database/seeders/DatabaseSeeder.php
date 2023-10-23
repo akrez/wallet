@@ -14,27 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
-        Currency::factory()->create([
-            'key' => 'irr',
-            'name' => 'irrial',
-            'symbol' => 'R',
-            'abbr' => 'IRR',
-            'is_active' => true,
-        ]);
-
-        Currency::factory()->create([
-            'key' => 'usd',
-            'name' => 'dollar',
-            'symbol' => '$',
-            'abbr' => 'USD',
-            'is_active' => true,
+        $this->call([
+            UserSeeder::class,
+            CurrencySeeder::class,
         ]);
     }
 }

@@ -20,4 +20,9 @@ Route::prefix('v1')->group(function () {
     Route::get('payments/{payment}', [PaymentController::class, 'show']);
     Route::patch('payments/{payment}/reject', [PaymentController::class, 'reject']);
     Route::patch('payments/{payment}/approve', [PaymentController::class, 'approve']);
+    //
+    Route::get('currencies', [CurrencyController::class, 'index']);
+    Route::post('currencies', [CurrencyController::class, 'store']);
+    Route::patch('currencies/{currency}/active', [CurrencyController::class, 'active']);
+    Route::patch('currencies/{currency}/deactive', [CurrencyController::class, 'deactive']);
 });
