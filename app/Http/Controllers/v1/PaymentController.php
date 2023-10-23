@@ -13,6 +13,7 @@ use App\Http\Requests\UpdatePaymentRequest;
 use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
 use App\Models\Transaction;
+use Illuminate\Support\Carbon;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class PaymentController extends Controller
@@ -43,6 +44,7 @@ class PaymentController extends Controller
     {
         $payment = new Payment($request->all());
         $payment->user_id = 1;
+        $payment->status = PaymentStatusEnum::Pending;
         $payment->save();
         return Response::message('payment.messages.payment_successfuly_created')
             ->data(new PaymentResource($payment))
@@ -86,13 +88,14 @@ class PaymentController extends Controller
 
     public function reject(Payment $payment)
     {
-        if ($payment->status->value != PaymentStatusEnum::Pending) {
+        if ($payment->status->value != PaymentStatusEnum::Pending->value) {
             throw new BadRequestException(__('payment.errors.you_can_only_decline_pending_payments'), 403);
         }
 
-        $payment->update([
-            'status' => PaymentStatusEnum::Rejected,
-        ]);
+        $payment->status = PaymentStatusEnum::Rejected;
+        $payment->status_updated_at = Carbon::now();
+        $payment->status_updated_by = 1;
+        $payment->save();
 
         PaymentRejectedEvent::dispatch($payment, PaymentStatusEnum::Rejected);
 
@@ -101,7 +104,7 @@ class PaymentController extends Controller
 
     public function approve(Payment $payment)
     {
-        if ($payment->status->value != PaymentStatusEnum::Pending) {
+        if ($payment->status->value != PaymentStatusEnum::Pending->value) {
             throw new BadRequestException(__('payment.errors.you_can_only_decline_pending_payments'), 403);
         }
 
@@ -110,9 +113,10 @@ class PaymentController extends Controller
             throw new BadRequestException('payment.errors.this_payment_has_already_been_used', 403);
         }
 
-        $payment->update([
-            'status' => PaymentStatusEnum::Approved,
-        ]);
+        $payment->status = PaymentStatusEnum::Approved;
+        $payment->status_updated_at = Carbon::now();
+        $payment->status_updated_by = 1;
+        $payment->save();
 
         PaymentApprovedEvent::dispatch($payment, PaymentStatusEnum::Approved);
 

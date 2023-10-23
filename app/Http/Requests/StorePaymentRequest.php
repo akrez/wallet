@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ExistsInCurrency;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePaymentRequest extends FormRequest
@@ -23,7 +24,11 @@ class StorePaymentRequest extends FormRequest
     {
         return [
             'amount' => ['required', 'numeric'],
-            'currency' => ['required', 'string'],
+            'currency_key' => [
+                'required',
+                'string',
+                new ExistsInCurrency()
+            ],
         ];
     }
 }
