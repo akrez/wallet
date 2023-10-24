@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\V1;
+namespace App\Http\Controllers\v1;
 
 use App\Events\Currency\CurrencyActivated;
 use App\Events\Currency\CurrencyDeActivated;
