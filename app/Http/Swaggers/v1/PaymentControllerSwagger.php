@@ -13,10 +13,11 @@ interface PaymentControllerSwagger extends Controller
     /**
      * @OA\Get(
      *     path="/v1/payments",
-     *     operationId="PaymentIndex",
-     *     tags={"PAYMENT"},
-     *
-     *     summary="Payment List",
+     *     operationId="index",
+     *     tags={"Payment"},
+     * 
+     *     summary="index Payment",
+     *     description="index Payment",
      *
      *      @OA\Response(response=200, description="Successful operation"),
      *      @OA\Response(response=201, description="Successful operation"),
@@ -35,10 +36,11 @@ interface PaymentControllerSwagger extends Controller
     /**
      * @OA\Post(
      *     path="/v1/payments",
-     *     operationId="PaymentStore",
-     *     tags={"PAYMENT"},
-     *
-     *     summary="Payment Store",
+     *     operationId="store",
+     *     tags={"Payment"},
+     * 
+     *     summary="store Payment",
+     *     description="store Payment",
      *
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
@@ -65,16 +67,17 @@ interface PaymentControllerSwagger extends Controller
 
     /**
      * @OA\Get(
-     *     path="/v1/payments/{unique_id}",
-     *     operationId="PaymentShow",
-     *     tags={"PAYMENT"},
-     *
-     *     summary="GET Payment By UniqueId",
-     *
+     *     path="/v1/payments/{id}",
+     *     operationId="show",
+     *     tags={"Payment"},
+     * 
+     *     summary="show Payment",
+     *     description="show Payment",
+     * 
      *     @OA\Parameter(
-     *         name="unique_id",
+     *         name="id",
      *         in="path",
-     *         description="payment unique id",
+     *         description="payment id",
      *         required=true,
      *         example="1234567890qwer",
      *         @OA\Schema(type="string")
@@ -100,21 +103,21 @@ interface PaymentControllerSwagger extends Controller
 
     /**
      * @OA\Patch(
-     *     path="/v1/payments/{unique_id}/reject",
-     *     operationId="PaymentReject",
-     *     tags={"PAYMENT"},
-     *
-     *     summary="Payment Reject",
-     *
+     *     path="/v1/payments/{id}/reject",
+     *     operationId="reject",
+     *     tags={"Payment"},
+     * 
+     *     summary="reject Payment",
+     *     description="reject Payment",
+     * 
      *     @OA\Parameter(
-     *         name="unique_id",
+     *         description="payment id",
      *         in="path",
-     *         description="payment unique id",
+     *         name="id",
      *         required=true,
-     *         example="1234567890qwer",
      *         @OA\Schema(type="string")
      *      ),
-     *
+     * 
      *      @OA\Response(response=200, description="Successful operation"),
      *      @OA\Response(response=201, description="Successful operation"),
      *      @OA\Response(response=202, description="Successful operation"),
@@ -129,21 +132,21 @@ interface PaymentControllerSwagger extends Controller
 
     /**
      * @OA\Patch(
-     *     path="/v1/payments/{unique_id}/verify",
-     *     operationId="PaymentVerify",
-     *     tags={"PAYMENT"},
-     *
-     *     summary="Payment Verify",
-     *
+     *     path="/v1/payments/{id}/approve",
+     *     operationId="approve",
+     *     tags={"Payment"},
+     * 
+     *     summary="approve Payment",
+     *     description="approve Payment",
+     * 
      *     @OA\Parameter(
-     *         name="unique_id",
+     *         description="payment id",
      *         in="path",
-     *         description="payment unique id",
+     *         name="id",
      *         required=true,
-     *         example="1234567890qwer",
      *         @OA\Schema(type="string")
      *      ),
-     *
+     * 
      *      @OA\Response(response=200, description="Successful operation"),
      *      @OA\Response(response=201, description="Successful operation"),
      *      @OA\Response(response=202, description="Successful operation"),

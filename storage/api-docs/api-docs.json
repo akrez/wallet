@@ -14,10 +14,11 @@
         "/v1/payments": {
             "get": {
                 "tags": [
-                    "PAYMENT"
+                    "Payment"
                 ],
-                "summary": "Payment List",
-                "operationId": "PaymentIndex",
+                "summary": "index Payment",
+                "description": "index Payment",
+                "operationId": "index",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -47,10 +48,11 @@
             },
             "post": {
                 "tags": [
-                    "PAYMENT"
+                    "Payment"
                 ],
-                "summary": "Payment Store",
-                "operationId": "PaymentStore",
+                "summary": "store Payment",
+                "description": "store Payment",
+                "operationId": "store",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -86,18 +88,19 @@
                 }
             }
         },
-        "/v1/payments/{unique_id}": {
+        "/v1/payments/{id}": {
             "get": {
                 "tags": [
-                    "PAYMENT"
+                    "Payment"
                 ],
-                "summary": "GET Payment By UniqueId",
-                "operationId": "PaymentShow",
+                "summary": "show Payment",
+                "description": "show Payment",
+                "operationId": "show",
                 "parameters": [
                     {
-                        "name": "unique_id",
+                        "name": "id",
                         "in": "path",
-                        "description": "payment unique id",
+                        "description": "payment id",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -133,23 +136,23 @@
                 }
             }
         },
-        "/v1/payments/{unique_id}/reject": {
+        "/v1/payments/{id}/reject": {
             "patch": {
                 "tags": [
-                    "PAYMENT"
+                    "Payment"
                 ],
-                "summary": "Payment Reject",
-                "operationId": "PaymentReject",
+                "summary": "reject Payment",
+                "description": "reject Payment",
+                "operationId": "reject",
                 "parameters": [
                     {
-                        "name": "unique_id",
+                        "name": "id",
                         "in": "path",
-                        "description": "payment unique id",
+                        "description": "payment id",
                         "required": true,
                         "schema": {
                             "type": "string"
-                        },
-                        "example": "1234567890qwer"
+                        }
                     }
                 ],
                 "responses": {
@@ -180,23 +183,23 @@
                 }
             }
         },
-        "/v1/payments/{unique_id}/verify": {
+        "/v1/payments/{id}/approve": {
             "patch": {
                 "tags": [
-                    "PAYMENT"
+                    "Payment"
                 ],
-                "summary": "Payment Verify",
-                "operationId": "PaymentVerify",
+                "summary": "approve Payment",
+                "description": "approve Payment",
+                "operationId": "approve",
                 "parameters": [
                     {
-                        "name": "unique_id",
+                        "name": "id",
                         "in": "path",
-                        "description": "payment unique id",
+                        "description": "payment id",
                         "required": true,
                         "schema": {
                             "type": "string"
-                        },
-                        "example": "1234567890qwer"
+                        }
                     }
                 ],
                 "responses": {
