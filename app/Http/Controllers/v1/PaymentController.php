@@ -4,7 +4,7 @@ namespace App\Http\Controllers\v1;
 
 use App\Enums\PaymentStatusEnum;
 use App\Events\PaymentRejectedEvent;
-use App\Events\PaymentStatusChangedEvent;
+use App\Http\Swaggers\v1\PaymentControllerSwagger;
 use App\Events\PaymentApprovedEvent;
 use App\Facades\Response;
 use App\Http\Controllers\Controller;
@@ -15,13 +15,14 @@ use App\Models\Payment;
 use App\Models\Transaction;
 use Illuminate\Support\Carbon;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+use Illuminate\Http\Request;
 
-class PaymentController extends Controller
+class PaymentController extends Controller implements PaymentControllerSwagger
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $payments = Payment::paginate(20);
         return Response::message('payment.messages.payment_list_found_successfully')
