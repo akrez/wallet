@@ -61,7 +61,7 @@ interface PaymentControllerSwagger extends Controller
      *     @OA\Response(response=404, description="Resource Not Found")
      * )
      */
-    public function store(StorepaymentRequest $request);
+    public function store(StorePaymentRequest $request);
 
     /**
      * @OA\Get(
@@ -90,11 +90,13 @@ interface PaymentControllerSwagger extends Controller
      *      @OA\Response(response=404, description="Resource Not Found")
      * )
      */
-    public function show(payment $payment);
+    public function show(Payment $payment);
 
-    public function edit(payment $payment);
+    public function edit(Payment $payment);
 
-    public function update(UpdatepaymentRequest $request, payment $payment);
+    public function update(UpdatePaymentRequest $request, Payment $payment);
+
+    public function destroy(Payment $payment);
 
     /**
      * @OA\Patch(
@@ -123,7 +125,7 @@ interface PaymentControllerSwagger extends Controller
      *      @OA\Response(response=404, description="Resource Not Found")
      * )
      */
-    public function reject(payment $payment);
+    public function reject(Payment $payment);
 
     /**
      * @OA\Patch(
@@ -152,7 +154,5 @@ interface PaymentControllerSwagger extends Controller
      *      @OA\Response(response=404, description="Resource Not Found")
      * )
      */
-    public function approve(payment $payment);
-
-    public function destroy(payment $payment);
+    public function approve(Payment $payment);
 }
