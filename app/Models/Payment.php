@@ -11,10 +11,7 @@ class Payment extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'amount',
-        'currency_key',
-    ];
+    protected $guarded = ['id'];
 
     protected $casts = [
         'status' => PaymentStatusEnum::class,

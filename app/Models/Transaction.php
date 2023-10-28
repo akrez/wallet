@@ -10,11 +10,7 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    public $fillable = [
-        'amount',
-        'currency_key',
-        'balance',
-    ];
+    protected $guarded = ['id'];
 
     public function payment(): BelongsTo
     {
