@@ -94,12 +94,15 @@ class PaymentController extends Controller implements PaymentControllerSwagger
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Payment $payment)
     {
-        //
+        if ($payment->status != PaymentStatusEnum::Pending) {
+            return throw new BadRequestException(__('payment.errors.you_can_delete_pending_payments'));
+        }
+
+        $payment->delete();
+
+        return Response::message(__('payment.messages.payment_successfully_removed'))->send();
     }
 
     public function reject(Payment $payment)

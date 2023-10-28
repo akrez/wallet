@@ -5,7 +5,7 @@ namespace App\Http\Swaggers\v1;
 use App\Http\Swaggers\Controller;
 use App\Http\Requests\StorepaymentRequest;
 use App\Http\Requests\UpdatepaymentRequest;
-use App\Models\payment;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 interface PaymentControllerSwagger extends Controller
@@ -99,6 +99,24 @@ interface PaymentControllerSwagger extends Controller
 
     public function update(UpdatePaymentRequest $request, Payment $payment);
 
+    /**
+     * @OA\Delete(
+     *      path="/api/v1/payments/{id}",
+     *      operationId="DeletePayment",
+     *      tags={"Payments"},
+     *      summary="Delete Payment",
+     *      description="Delete  payment",
+     *      @OA\Response(response=201,description="Payment Successfuly Removed"),
+     *      @OA\Response(response=403, description="Bad request"),
+     *      @OA\Response(response=404, description="Not Found"),
+     *      @OA\Parameter(
+     *         description="Payment id",
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *     ),
+     * )
+     */
     public function destroy(Payment $payment);
 
     /**

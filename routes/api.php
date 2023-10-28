@@ -17,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function () {
-    Route::get('payments', [PaymentController::class, 'index']);
-    Route::post('payments', [PaymentController::class, 'store']);
-    Route::get('payments/{payment}', [PaymentController::class, 'show']);
-    Route::patch('payments/{payment}/reject', [PaymentController::class, 'reject']);
-    Route::patch('payments/{payment}/approve', [PaymentController::class, 'approve']);
+    Route::prefix('payments')->group(function () {
+        Route::get('/', [PaymentController::class, 'index']);
+        Route::post('/', [PaymentController::class, 'store']);
+        Route::get('/{payment}', [PaymentController::class, 'show']);
+        Route::patch('/{payment}/reject', [PaymentController::class, 'reject']);
+        Route::patch('/{payment}/approve', [PaymentController::class, 'approve']);
+        Route::delete('/{payment}', [PaymentController::class, 'destroy']);
+    });
     //
     Route::get('currencies', [CurrencyController::class, 'index']);
     Route::post('currencies', [CurrencyController::class, 'store']);
