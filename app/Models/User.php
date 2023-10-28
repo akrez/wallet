@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -51,5 +52,26 @@ class User extends Authenticatable
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function updateBalance()
+    {
+        $totalAmount = $this->transactions()
+            ->select('currency_key', DB::raw('SUM(amount) as total_amount'))
+            ->groupBy('currency_key')
+            ->pluck('total_amount', 'currency_key');
+
+        $this->update([
+            'balance' => json_encode($totalAmount->jsonSerialize())
+        ]);
+
+        return $totalAmount;
+    }
+
+    public function getBalance(String $currency): int
+    {
+        return $this->transactions()
+            ->where('currency_key', $currency)
+            ->sum('amount');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\v1\CurrencyController;
+use App\Http\Controllers\v1\DepositController;
 use App\Http\Controllers\v1\PaymentController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +27,6 @@ Route::prefix('v1')->group(function () {
     Route::post('currencies', [CurrencyController::class, 'store']);
     Route::patch('currencies/{currency}/active', [CurrencyController::class, 'active']);
     Route::patch('currencies/{currency}/deactive', [CurrencyController::class, 'deactive']);
+    //
+    Route::post('deposit/transfer', [DepositController::class, 'transfer']);
 });
