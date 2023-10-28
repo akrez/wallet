@@ -43,10 +43,25 @@ class PaymentController extends Controller implements PaymentControllerSwagger
      */
     public function store(StorePaymentRequest $request)
     {
-        $payment = new Payment($request->all());
-        $payment->user_id = 1;
-        $payment->status = PaymentStatusEnum::Pending;
-        $payment->save();
+        $existsPayment = Payment::query()
+            ->where('amount', $request->amount)
+            ->where('currency_id', $request->currency_id)
+            ->where('created_at', '>', Carbon::now()->subMinutes(5))
+            ->first();
+        if ($existsPayment) throw new BadRequestException(__('payment.messages.duplicate_payment_exists', [
+            'amount' => $existsPayment->amount,
+            'currency' => $existsPayment->currency->name,
+        ]));
+
+        $payment = Payment::create([
+            'user_id' => 1,
+            'amount' => $request->amount,
+            'currency_id' => $request->currency_id,
+            'type' => $request->type,
+            'unique_id' => uniqid(),
+            'status' => PaymentStatusEnum::Pending,
+        ]);
+
         return Response::message('payment.messages.payment_successfuly_created')
             ->data(new PaymentResource($payment))
             ->status(200)
