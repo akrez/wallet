@@ -46,6 +46,9 @@ class DepositController extends Controller
                 'balance' => ($toUserBalance + $request->amount),
             ]);
 
+            $fromUser->updateBalance();
+            $toUser->updateBalance();
+
             DB::commit();
             return Response::message(__('deposit.messages.balance_transferred'))->send();
         } catch (\Exception $e) {
