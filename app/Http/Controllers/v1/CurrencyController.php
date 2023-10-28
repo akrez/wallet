@@ -16,7 +16,7 @@ class CurrencyController extends Controller
 {
     public function index()
     {
-        $currencies = Currency::paginate(20);
+        $currencies = Currency::paginate(config('pagination.default_per_page'));
         return Response::message('payment.messages.payment_list_found_successfully')
             ->data(CurrencyResource::collection($currencies))
             ->send();
