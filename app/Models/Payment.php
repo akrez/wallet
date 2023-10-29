@@ -26,6 +26,11 @@ class Payment extends Model
         });
     }
 
+    public function getRouteKeyName()
+    {
+        return 'unique_id';
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
