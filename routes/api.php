@@ -26,10 +26,12 @@ Route::prefix('v1')->group(function () {
         Route::delete('/{payment}', [PaymentController::class, 'destroy']);
     });
     //
-    Route::get('currencies', [CurrencyController::class, 'index']);
-    Route::post('currencies', [CurrencyController::class, 'store']);
-    Route::patch('currencies/{currency}/active', [CurrencyController::class, 'active']);
-    Route::patch('currencies/{currency}/deactive', [CurrencyController::class, 'deactive']);
+    Route::prefix('currencies')->group(function () {
+        Route::get('/', [CurrencyController::class, 'index']);
+        Route::post('/', [CurrencyController::class, 'store']);
+        Route::patch('/{currency}/active', [CurrencyController::class, 'active']);
+        Route::patch('/{currency}/deactive', [CurrencyController::class, 'deactive']);
+    });
     //
     Route::post('deposit/transfer', [DepositController::class, 'transfer']);
 });
