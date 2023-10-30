@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\v1\CurrencyController;
 use App\Http\Controllers\v1\DepositController;
 use App\Http\Controllers\v1\PaymentController;
@@ -16,7 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('v1')->group(function () {
+Route::prefix('v1')->middleware(['throttle:60,1'])->group(function () {
+    //
+    Route::group(['middleware' => 'api', 'prefix' => 'auth',], function () {
+        Route::post('/login', [AuthController::class, 'login'])->name('login');
+        Route::post('/register', [AuthController::class, 'register']);
+        Route::post('/logout', [AuthController::class, 'logout']);
+        Route::post('/refresh', [AuthController::class, 'refresh']);
+        Route::get('/me', [AuthController::class, 'me']);
+    });
+    //
     Route::prefix('payments')->group(function () {
         Route::get('/', [PaymentController::class, 'index']);
         Route::post('/', [PaymentController::class, 'store']);
@@ -34,4 +44,5 @@ Route::prefix('v1')->group(function () {
     });
     //
     Route::post('deposit/transfer', [DepositController::class, 'transfer']);
+    //
 });
