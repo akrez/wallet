@@ -47,7 +47,7 @@ class FetchNavasanRatesJob implements ShouldQueue
             if ($navasanItem) {
                 Rate::create([
                     'currency_key' => $currencyKey,
-                    'rate' => $navasanItem['value'],
+                    'rate' => $navasanItem['value'] * 10,
                     'rate_currency_key' => 'rial',
                 ]);
             }
