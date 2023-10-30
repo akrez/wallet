@@ -33,14 +33,14 @@ class DepositController extends Controller
             }
 
             Transaction::create([
-                'user_id' => $request->from_user,
+                'user_id' => $fromUser->id,
                 'amount' => $request->amount * -1,
                 'currency_key' => $request->currency_key,
                 'balance' => $fromUserBalance - $request->amount,
             ]);
 
             Transaction::create([
-                'user_id' => $request->to_user,
+                'user_id' => $toUser->id,
                 'amount' => $request->amount,
                 'currency_key' => $request->currency_key,
                 'balance' => ($toUserBalance + $request->amount),
