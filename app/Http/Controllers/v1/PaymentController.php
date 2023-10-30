@@ -24,7 +24,7 @@ class PaymentController extends Controller implements PaymentControllerSwagger
      */
     public function index(Request $request)
     {
-        $payments = Payment::paginate(config('settings.default_per_page'));
+        $payments = Payment::paginate(config('settings.pagination.default_per_page'));
         return Response::message('payment.messages.payment_list_found_successfully')
             ->data(PaymentResource::collection($payments))
             ->send();

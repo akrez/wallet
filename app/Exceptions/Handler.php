@@ -25,6 +25,7 @@ class Handler extends ExceptionHandler
         ForbiddenAccessException::class,
         NotFoundException::class,
         UnauthorizedException::class,
+        NotFoundException::class,
     ];
 
     /**
