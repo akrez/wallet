@@ -45,7 +45,7 @@ class PaymentController extends Controller implements PaymentControllerSwagger
     {
         $existsPayment = Payment::query()
             ->where('amount', $request->amount)
-            ->where('currency_id', $request->currency_id)
+            ->where('currency_key', $request->currency_key)
             ->where('created_at', '>', Carbon::now()->subMinutes(5))
             ->first();
         if ($existsPayment) throw new BadRequestException(__('payment.messages.duplicate_payment_exists', [
@@ -56,7 +56,7 @@ class PaymentController extends Controller implements PaymentControllerSwagger
         $payment = Payment::create([
             'user_id' => 1,
             'amount' => $request->amount,
-            'currency_id' => $request->currency_id,
+            'currency_key' => $request->currency_key,
             'type' => $request->type,
             'unique_id' => uniqid(),
             'status' => PaymentStatusEnum::Pending,
