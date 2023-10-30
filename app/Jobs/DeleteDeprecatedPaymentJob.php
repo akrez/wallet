@@ -27,6 +27,9 @@ class DeleteDeprecatedPaymentJob implements ShouldQueue
      */
     public function handle(): void
     {
-        Payment::query()->whereIn('id', $this->paymentIdList)->delete();
+        $payments = Payment::query()->whereIn('id', $this->paymentIdList)->get();
+        foreach ($payments as $payment) {
+            $payment->delete();
+        }
     }
 }
