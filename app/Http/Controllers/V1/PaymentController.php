@@ -53,7 +53,7 @@ class PaymentController extends Controller implements PaymentControllerSwagger
         ]));
 
         $payment = Payment::create([
-            'user_id' => 1,
+            'user_id' => auth()->id(),
             'amount' => $request->amount,
             'currency_key' => $request->currency_key,
             'type' => $request->type,

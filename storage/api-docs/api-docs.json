@@ -102,9 +102,6 @@
                         "in": "path",
                         "description": "payment id",
                         "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
                         "example": "1234567890qwer"
                     }
                 ],
@@ -134,12 +131,10 @@
                         "description": "Resource Not Found"
                     }
                 }
-            }
-        },
-        "/api/V1/payments/{id}": {
+            },
             "delete": {
                 "tags": [
-                    "Payments"
+                    "Payment"
                 ],
                 "summary": "Delete Payment",
                 "description": "Delete  payment",
@@ -178,10 +173,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "payment id",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -225,10 +217,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "payment id",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "required": true
                     }
                 ],
                 "responses": {

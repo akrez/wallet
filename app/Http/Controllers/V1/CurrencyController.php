@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\V1;
 
-use App\Events\Currency\CurrencyActivated;
-use App\Events\Currency\CurrencyDeActivated;
 use App\Facades\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CurrencyStoreRequest;
 use App\Http\Resources\CurrencyResource;
 use App\Models\Currency;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class CurrencyController extends Controller

@@ -95,7 +95,7 @@ interface PaymentControllerSwagger extends Controller
      * @OA\Delete(
      *      path="/V1/payments/{id}",
      *      operationId="DeletePayment",
-     *      tags={"Payments"},
+     *      tags={"Payment"},
      *      summary="Delete Payment",
      *      description="Delete  payment",
      *      @OA\Response(response=201,description="Payment Successfuly Removed"),
