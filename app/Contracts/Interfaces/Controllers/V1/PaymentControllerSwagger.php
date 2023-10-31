@@ -2,9 +2,8 @@
 
 namespace App\Contracts\Interfaces\Controllers\V1;
 
-use App\Http\Swaggers\Controller;
+use App\Contracts\Interfaces\Controllers\Controller;
 use App\Http\Requests\StorepaymentRequest;
-use App\Http\Requests\UpdatepaymentRequest;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 

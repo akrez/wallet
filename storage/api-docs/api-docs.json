@@ -136,6 +136,35 @@
                 }
             }
         },
+        "/api/V1/payments/{id}": {
+            "delete": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "Delete Payment",
+                "description": "Delete  payment",
+                "operationId": "DeletePayment",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Payment id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Payment Successfuly Removed"
+                    },
+                    "403": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
         "/V1/payments/{id}/reject": {
             "patch": {
                 "tags": [
