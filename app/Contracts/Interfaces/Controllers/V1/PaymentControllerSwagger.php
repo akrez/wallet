@@ -3,7 +3,7 @@
 namespace App\Contracts\Interfaces\Controllers\V1;
 
 use App\Contracts\Interfaces\Controllers\Controller;
-use App\Http\Requests\StorepaymentRequest;
+use App\Http\Requests\StorePaymentRequest;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -77,7 +77,6 @@ interface PaymentControllerSwagger extends Controller
      *         description="payment id",
      *         required=true,
      *         example="1234567890qwer",
-     *         @OA\Schema(type="string")
      *      ),
      *
      *      @OA\Response(response=200, description="Successful operation"),
@@ -94,7 +93,7 @@ interface PaymentControllerSwagger extends Controller
 
     /**
      * @OA\Delete(
-     *      path="/api/V1/payments/{id}",
+     *      path="/V1/payments/{id}",
      *      operationId="DeletePayment",
      *      tags={"Payments"},
      *      summary="Delete Payment",
@@ -126,7 +125,6 @@ interface PaymentControllerSwagger extends Controller
      *         in="path",
      *         name="id",
      *         required=true,
-     *         @OA\Schema(type="string")
      *      ),
      * 
      *      @OA\Response(response=200, description="Successful operation"),
@@ -155,7 +153,6 @@ interface PaymentControllerSwagger extends Controller
      *         in="path",
      *         name="id",
      *         required=true,
-     *         @OA\Schema(type="string")
      *      ),
      * 
      *      @OA\Response(response=200, description="Successful operation"),
