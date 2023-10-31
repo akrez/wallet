@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Swaggers\v1;
+namespace App\Contracts\Interfaces\Controllers\V1;
 
 use App\Http\Swaggers\Controller;
 use App\Http\Requests\StorepaymentRequest;
@@ -12,7 +12,7 @@ interface PaymentControllerSwagger extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/v1/payments",
+     *     path="/V1/payments",
      *     operationId="index",
      *     tags={"Payment"},
      * 
@@ -35,7 +35,7 @@ interface PaymentControllerSwagger extends Controller
 
     /**
      * @OA\Post(
-     *     path="/v1/payments",
+     *     path="/V1/payments",
      *     operationId="store",
      *     tags={"Payment"},
      * 
@@ -67,7 +67,7 @@ interface PaymentControllerSwagger extends Controller
 
     /**
      * @OA\Get(
-     *     path="/v1/payments/{id}",
+     *     path="/V1/payments/{id}",
      *     operationId="show",
      *     tags={"Payment"},
      * 
@@ -101,7 +101,7 @@ interface PaymentControllerSwagger extends Controller
 
     /**
      * @OA\Delete(
-     *      path="/api/v1/payments/{id}",
+     *      path="/api/V1/payments/{id}",
      *      operationId="DeletePayment",
      *      tags={"Payments"},
      *      summary="Delete Payment",
@@ -121,7 +121,7 @@ interface PaymentControllerSwagger extends Controller
 
     /**
      * @OA\Patch(
-     *     path="/v1/payments/{id}/reject",
+     *     path="/V1/payments/{id}/reject",
      *     operationId="reject",
      *     tags={"Payment"},
      * 
@@ -150,7 +150,7 @@ interface PaymentControllerSwagger extends Controller
 
     /**
      * @OA\Patch(
-     *     path="/v1/payments/{id}/approve",
+     *     path="/V1/payments/{id}/approve",
      *     operationId="approve",
      *     tags={"Payment"},
      * 

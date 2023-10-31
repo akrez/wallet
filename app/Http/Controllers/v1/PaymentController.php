@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\v1;
+namespace App\Http\Controllers\V1;
 
 use App\Enums\PaymentStatusEnum;
 use App\Events\PaymentRejectedEvent;
-use App\Http\Swaggers\v1\PaymentControllerSwagger;
+use App\Contracts\Interfaces\Controllers\V1\PaymentControllerSwagger;
 use App\Events\PaymentApprovedEvent;
 use App\Facades\Response;
 use App\Http\Controllers\Controller;

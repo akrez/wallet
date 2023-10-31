@@ -11,7 +11,7 @@
         }
     ],
     "paths": {
-        "/v1/payments": {
+        "/V1/payments": {
             "get": {
                 "tags": [
                     "Payment"
@@ -88,7 +88,7 @@
                 }
             }
         },
-        "/v1/payments/{id}": {
+        "/V1/payments/{id}": {
             "get": {
                 "tags": [
                     "Payment"
@@ -136,7 +136,7 @@
                 }
             }
         },
-        "/v1/payments/{id}/reject": {
+        "/V1/payments/{id}/reject": {
             "patch": {
                 "tags": [
                     "Payment"
@@ -183,7 +183,7 @@
                 }
             }
         },
-        "/v1/payments/{id}/approve": {
+        "/V1/payments/{id}/approve": {
             "patch": {
                 "tags": [
                     "Payment"

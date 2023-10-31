@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\v1\CurrencyController;
-use App\Http\Controllers\v1\DepositController;
-use App\Http\Controllers\v1\PaymentController;
+use App\Http\Controllers\V1\CurrencyController;
+use App\Http\Controllers\V1\DepositController;
+use App\Http\Controllers\V1\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('v1')->middleware('throttle:50,1')->group(function () {
+Route::prefix('V1')->middleware('throttle:50,1')->group(function () {
     //
     Route::prefix('auth')->middleware('api')->group(function () {
         Route::post('/login', [AuthController::class, 'login'])->name('login');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Swaggers;
+namespace App\Contracts\Interfaces\Controllers;
 
 /**
  * @OA\Info(
