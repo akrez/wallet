@@ -31,8 +31,6 @@ interface PaymentControllerSwagger extends Controller
      */
     public function index(Request $request);
 
-    public function create();
-
     /**
      * @OA\Post(
      *     path="/V1/payments",
@@ -94,10 +92,6 @@ interface PaymentControllerSwagger extends Controller
      * )
      */
     public function show(Payment $payment);
-
-    public function edit(Payment $payment);
-
-    public function update(UpdatePaymentRequest $request, Payment $payment);
 
     /**
      * @OA\Delete(

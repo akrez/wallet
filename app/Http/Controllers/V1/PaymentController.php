@@ -9,7 +9,6 @@ use App\Events\PaymentApprovedEvent;
 use App\Facades\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePaymentRequest;
-use App\Http\Requests\UpdatePaymentRequest;
 use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
 use App\Models\Transaction;
@@ -89,7 +88,7 @@ class PaymentController extends Controller implements PaymentControllerSwagger
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePaymentRequest $request, Payment $payment)
+    public function update(Request $request, Payment $payment)
     {
         //
     }
@@ -97,7 +96,7 @@ class PaymentController extends Controller implements PaymentControllerSwagger
     public function destroy(Payment $payment)
     {
         if ($payment->status != PaymentStatusEnum::Pending) {
-            return throw new BadRequestException(__('payment.errors.you_can_delete_pending_payments'));
+            throw new BadRequestException(__('payment.errors.you_can_delete_pending_payments'));
         }
 
         $payment->delete();
