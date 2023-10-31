@@ -18,6 +18,7 @@ interface PaymentControllerSwagger extends Controller
      *     summary="index Payment",
      *     description="index Payment",
      *
+     *     security={{"bearerAuth":{}}},
      *      @OA\Response(response=200, description="Successful operation"),
      *      @OA\Response(response=201, description="Successful operation"),
      *      @OA\Response(response=202, description="Successful operation"),
@@ -50,6 +51,7 @@ interface PaymentControllerSwagger extends Controller
      *         @OA\Property(property="payment_at", type="text"),
      *     ),),
      *
+     *     security={{"bearerAuth":{}}},
      *     @OA\Response(response=200, description="Successful operation"),
      *     @OA\Response(response=201, description="Successful operation"),
      *     @OA\Response(response=202, description="Successful operation"),
@@ -79,6 +81,7 @@ interface PaymentControllerSwagger extends Controller
      *         example="1234567890qwer",
      *      ),
      *
+     *     security={{"bearerAuth":{}}},
      *      @OA\Response(response=200, description="Successful operation"),
      *      @OA\Response(response=201, description="Successful operation"),
      *      @OA\Response(response=202, description="Successful operation"),
@@ -127,6 +130,7 @@ interface PaymentControllerSwagger extends Controller
      *         required=true,
      *      ),
      * 
+     *     security={{"bearerAuth":{}}},
      *      @OA\Response(response=200, description="Successful operation"),
      *      @OA\Response(response=201, description="Successful operation"),
      *      @OA\Response(response=202, description="Successful operation"),
@@ -155,6 +159,7 @@ interface PaymentControllerSwagger extends Controller
      *         required=true,
      *      ),
      * 
+     *     security={{"bearerAuth":{}}},
      *      @OA\Response(response=200, description="Successful operation"),
      *      @OA\Response(response=201, description="Successful operation"),
      *      @OA\Response(response=202, description="Successful operation"),
